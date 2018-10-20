@@ -1,0 +1,168 @@
+# - id: '1532464897815'
+  # alias: Startup LED
+  # trigger:
+  # - event: start
+    # platform: homeassistant
+  # condition: []
+  # action:
+  # - data:
+      # entity_id: switch.hassio_status_led
+    # entity_id: switch.hassio_status_led
+    # service: homeassistant.turn_on
+# - id: '1532466083371'
+  # alias: Passageway Light Motion
+  # trigger:
+  # - entity_id: binary_sensor.passageway_motion
+    # platform: state
+    # to: 'on'
+  # condition:
+  # - after: '18:00:00'
+    # before: 07:30:00
+    # condition: time
+  # action:
+  # - data:
+      # entity_id: switch.passageway_light
+    # service: homeassistant.turn_on
+# - id: '1532466436564'
+  # alias: Passageway Light Door
+  # trigger:
+  # - entity_id: binary_sensor.front_door
+    # platform: state
+    # to: 'on'
+  # condition:
+  # - after: '18:00:00'
+    # before: 07:30:00
+    # condition: time
+  # action:
+  # - data:
+      # entity_id: switch.passageway_light
+    # service: homeassistant.turn_on
+# - id: '1532466657550'
+  # alias: Passageway Light Auto Off
+  # trigger:
+  # - entity_id: binary_sensor.passageway_motion
+    # platform: state
+    # to: 'off'
+  # condition: []
+  # action:
+  # - delay: '60'
+  # - data:
+      # entity_id: switch.passageway_light
+    # service: homeassistant.turn_off
+# - id: '1532467675551'
+  # alias: TV Auto On
+  # trigger:
+  # - entity_id: media_player.tv
+    # platform: state
+    # to: playing
+  # condition:
+  # - condition: state
+    # entity_id: switch.tv_power
+    # state: 'off'
+  # action:
+  # - delay: '2'
+  # - data:
+      # entity_id: script.movie_mode
+    # service: homeassistant.turn_on
+# - id: '1532468014892'
+  # alias: TV Auto Off
+  # trigger:
+  # - entity_id: media_player.tv
+    # platform: state
+    # to: 'off'
+  # - entity_id: media_player.tv
+    # platform: state
+    # to: idle
+  # condition:
+  # - condition: state
+    # entity_id: switch.tv_power
+    # state: 'on'
+  # action:
+  # - delay: '600'
+  # - data:
+      # entity_id: script.media_off
+    # service: homeassistant.turn_on
+# - id: '1532469210031'
+  # alias: Chromecast Auto Volume Down
+  # trigger:
+  # - platform: template
+    # value_template: '{{ is_state(''media_player.tv'', ''off'') }}'
+  # - platform: template
+    # value_template: '{{ is_state(''media_player.tv'', ''stop'') }}'
+  # condition: []
+  # action:
+  # - data:
+      # entity_id: media_player.tv
+      # volume_level: '0.1'
+    # service: media_player.volume_set
+# - id: '1532469503235'
+  # alias: Chromecast Vol
+  # trigger:
+  # - entity_id: input_number.chromecast_volume
+    # platform: state
+  # condition: []
+  # action:
+  # - data:
+      # entity_id: media_player.tv
+      # volume_level: '{{ states.input_number.chromecast_volume.state | float * 0.09
+        # }}'
+    # service: media_player.volume_set
+  # - delay: '2'
+# - id: '1532469645474'
+  # alias: Big Red Button
+  # trigger:
+  # - payload: '1'
+    # platform: mqtt
+    # topic: button/switch/Switch
+  # condition: []
+  # action:
+  # - alias: ''
+    # data:
+      # entity_id: switch.computer_screen
+    # service: homeassistant.toggle
+# - id: '1532635970659'
+  # alias: Restart Button
+  # trigger:
+  # - entity_id: binary_sensor.pibutton
+    # platform: state
+  # condition: []
+  # action:
+  # - service: homeassistant.restart
+# - id: '1532636137724'
+  # alias: Bedroom Lamp Motion
+  # trigger:
+  # - entity_id: binary_sensor.bedroom_motion
+    # platform: state
+    # to: 'on'
+  # condition:
+  # - after: '18:00:00'
+    # before: 06:00:00
+    # condition: time
+  # action:
+  # - data:
+      # entity_id: switch.bedroom_lamp
+    # service: homeassistant.turn_on
+# - id: '1532636291596'
+  # alias: GHM Kitchen Vol
+  # trigger:
+  # - entity_id: input_number.ghm_kitchen_volume
+    # platform: state
+  # condition: []
+  # action:
+  # - data:
+      # entity_id: media_player.kitchen
+      # volume_level: '{{ states.input_number.ghm_kitchen_volume.state | float * 0.09
+        # }}'
+    # service: media_player.volume_set
+# - id: '1532636368501'
+  # alias: GHM Bedroom Vol
+  # trigger:
+  # - entity_id: input_number.ghm_bedroom_volume
+    # platform: state
+  # condition: []
+  # action:
+  # - data:
+      # entity_id: media_player.bedroom
+      # volume_level: '{{ states.input_number.ghm_bedroom_volume.state | float * 0.09
+        # }}'
+    # service: media_player.volume_set

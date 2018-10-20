@@ -1,0 +1,229 @@
+#################################################################
+#
+# WOL 
+#
+#################################################################
+
+- platform: wake_on_lan
+  name: "My Computer"
+  host: 192.168.1.6
+  mac_address: "94-DE-80-6F-81-A2"
+  # turn_off:
+      # service: shell_command.computer_shutdown
+
+#################################################################
+#
+# MQTT
+#
+#################################################################
+
+- platform: mqtt
+  name: "Bathroom Light"
+  state_topic: "bathroomlight/relay/Switch"
+  command_topic: "bathroomlight/gpio/12"
+  payload_on: "1"
+  payload_off: "0"
+  optimistic: false
+  qos: 0
+  retain: true
+- platform: mqtt
+  name: "Computer Lamp"
+  state_topic: "pcesp/relay1/Switch"
+  command_topic: "pcesp/gpio/12"
+  payload_on: "1"
+  payload_off: "0"
+  optimistic: false
+  qos: 0
+  retain: true
+- platform: mqtt
+  name: "Computer Screen"
+  state_topic: "pcesp/relay2/Switch"
+  command_topic: "pcesp/gpio/13"
+  payload_on: "1"
+  payload_off: "0"
+  optimistic: false
+  qos: 0
+  retain: true
+- platform: mqtt
+  name: "Bedroom Lamp"
+  state_topic: "bedroomesp/relay/Switch"
+  command_topic: "bedroomesp/gpio/12"
+  payload_on: "1"
+  payload_off: "0"
+  optimistic: false
+  qos: 0
+  retain: true
+- platform: mqtt
+  name: "Bedroom Light"
+  state_topic: "bedroomlight/relay/Switch"
+  command_topic: "bedroomlight/gpio/12"
+  payload_on: "1"
+  payload_off: "0"
+  optimistic: false
+  qos: 0
+  retain: true
+- platform: mqtt
+  name: "Fiber Box"
+  state_topic: "ESP_UPS/relay3/Switch"
+  command_topic: "ESP_UPS/gpio/13"
+  payload_on: "0"
+  payload_off: "1"
+  optimistic: false
+  qos: 0
+  retain: true
+# - platform: mqtt
+  # name: "Router"
+  # state_topic: "ESP_UPS/relay1/Switch"
+  # command_topic: "ESP_UPS/gpio/14"
+  # payload_on: "0"
+  # payload_off: "1"
+  # optimistic: false
+  # qos: 0
+  # retain: true
+- platform: mqtt
+  name: "Passageway Light"
+  state_topic: "ESP_UPS/relay2/Switch"
+  command_topic: "ESP_UPS/gpio/16"
+  payload_on: "0"
+  payload_off: "1"
+  optimistic: false
+  qos: 0
+  retain: true
+- platform: mqtt
+  name: "Kitchen Lights"
+  state_topic: "Livingroomlights/relay1/Switch"
+  command_topic: "Livingroomlights/gpio/5"
+  payload_on: "0"
+  payload_off: "1"
+  optimistic: false
+  qos: 0
+  retain: true
+- platform: mqtt
+  name: "Outside Lights"
+  state_topic: "Livingroomlights/relay2/Switch"
+  command_topic: "Livingroomlights/gpio/16"
+  payload_on: "0"
+  payload_off: "1"
+  optimistic: false
+  qos: 0
+  retain: true
+- platform: mqtt
+  name: "Livingroom Lights"
+  state_topic: "Livingroomlights/relay3/Switch"
+  command_topic: "Livingroomlights/gpio/12"
+  payload_on: "0"
+  payload_off: "1"
+  optimistic: false
+  qos: 0
+  retain: true
+# - platform: mqtt
+  # name: "tvonoff"
+  # state_topic: "home/OpenMQTTGateway/IRtoMQTT"
+  # command_topic: "home/OpenMQTTGateway/commands/IR_NEC"
+  # payload_on: "2774153415"
+  # payload_off: "2774153415"
+  # optimistic: false
+  # retain: true
+
+# - platform: mqtt
+  # name: "Infrared Test"
+  # command_topic: "IR_TEST/cmd"
+  # payload_on: "irsend,nec,20DF23DC,32"
+  # payload_off: “irsend,nec,20DFA35C,32”
+  
+# - platform: mqtt
+  # name: "Quartz"
+  # state_topic: "livingroom/switch1/Relay"
+  # command_topic: "livingroom/gpio/12"
+  # payload_on: "1"
+  # payload_off: "0"
+  # optimistic: false
+  # qos: 0
+  # retain: true
+# - platform: mqtt
+  # name: "Living Room Fan"
+  # state_topic: "livingroom/switch2/Relay"
+  # command_topic: "livingroom/gpio/13"
+  # payload_on: "1"
+  # payload_off: "0"
+  # optimistic: false
+  # qos: 0
+  # retain: true
+  
+#################################################################
+#
+# IR Blaster (Broadlink RM3)
+#
+#################################################################
+
+- platform: broadlink
+  host: 192.168.1.5
+  mac: '34:EA:34:B2:FE:B6'
+  timeout: 30
+  switches:
+    tv_power:
+      friendly_name: "Television"
+      command_on: 'JgBOAB4ZORsdGh0bHBwcGh0aHhocNh0aOBwdAArzHRo4HBwcGxsdGxwbHBsfGB02HBs4HB0ACvIdGzgbHRodHBsbHRsdGR0bHDYdGjgcHAANBQAAAAAAAAAAAAA=='
+      command_off: 'JgBOABwbHRs2Hh0ZHRsdGhwcHBodNR0bOBwdAArzHRseGTgbHRodGxwbHRodGhw3Hxg4Gx0ACvUcGh0cNxwcGx4aHRkdHBseGTYcHDgbHAANBQAAAAAAAAAAAAA=='
+    amp_power:
+      friendly_name: "Amplifier"
+      command_on: 'JgDYAAABFosSNBEREjQREhESETUREBMyEhESNBIRETQRNRIRETQREhIREhEQNRE0EjMSEhMQERESNBE0ERIREhIREjMSMxIzEwADPAABF4oSNBESETMUEBESDzUSERI0EhATMhMREjMSNBEREjMSEhIQERMQNBQyEjMQExETEBISNBE0ERIQEhETETMSNBI0FAADOgABF4oSMxETETMSERESETURFA8zExASNBIRETQSNBIRETMSEhETEBERNBE1EzISEhESERIRMxI0ERESExASETMSNBIzEwANBQ=='
+      command_off: 'JgDYAAABFosSNBEREjQREhESETUREBMyEhESNBIRETQRNRIRETQREhIREhEQNRE0EjMSEhMQERESNBE0ERIREhIREjMSMxIzEwADPAABF4oSNBESETMUEBESDzUSERI0EhATMhMREjMSNBEREjMSEhIQERMQNBQyEjMQExETEBISNBE0ERIQEhETETMSNBI0FAADOgABF4oSMxETETMSERESETURFA8zExASNBIRETQSNBIRETMSEhETEBERNBE1EzISEhESERIRMxI0ERESExASETMSNBIzEwANBQ=='
+    backlight_power:
+      friendly_name: "Backlight"
+      command_on: 'JgBYAAABKJMUEhMUERMTERMSFBMSExITEzYUNhI4ETgTExE3FDUUNhM2FDYTEhMSExMSExIUEhITExMSEjcTNhM3EjcTNxE4EwAFOgABKUoUAAxHAAEoShMADQU=='
+      command_off: 'JgBQAAABJ5URFBISExMSExMTERMSExMTEzgRNxM2FDUTERg0ETgROBIUETcTEhIUEhMSExMTERQROBEUETgQORI4EjcSNxM3EgAFOwABKEsSAA0FAAAAAAAAAAA=='
+
+#################################################################
+#
+# Pi GPIO 
+#
+#################################################################
+
+# - platform: rpi_gpio
+  # ports:
+    # 13: Hassio Status LED
+  # invert_logic: false
+  
+#################################################################
+#
+# Docker
+#
+#################################################################
+
+- platform: rest
+  resource: "http://127.0.0.1:8126/container/homeassistant"
+  name: Home Assistant
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+- platform: rest
+  resource: "http://127.0.0.1:8126/container/mosquitto"
+  name: Mosquitto
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+- platform: rest
+  resource: "http://127.0.0.1:8126/container/portainer"
+  name: Portainer
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+- platform: rest
+  resource: "http://127.0.0.1:8126/container/dockermon"
+  name: Dockermon
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+- platform: rest
+  resource: "http://127.0.0.1:8126/container/flextv"
+  name: Phlex TV
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+- platform: rest
+  resource: "http://127.0.0.1:8126/container/plex"
+  name: Plex Server
+  body_on: '{"state": "start"}'
+  body_off: '{"state": "stop"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

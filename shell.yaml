@@ -1,0 +1,12 @@
+start_steam: "/usr/bin/curl http://192.168.1.3/steamstart.php"
+stop_steam: "/usr/bin/curl http://192.168.1.3/steamstop.php"
+# computer_shutdown: "/usr/bin/curl http://192.168.1.6:7760/forcepoweroff"
+# computer_restart: "/usr/bin/curl http://192.168.1.6:7760/reboot"
+# computer_hibernate: "/usr/bin/curl http://192.168.1.6:7760/hibernate"
+foscam_liv_front: "curl -k 'http://192.168.1.12/decoder_control.cgi?command=31&user=admin&pwd=Wh1sk3y'"
+foscam_liv_back: "curl -k 'http://192.168.1.12/decoder_control.cgi?command=33&user=admin&pwd=Wh1sk3y'"
+foscam_liv_ir_on: "curl -k 'http://192.168.1.12/decoder_control.cgi?command=95&user=admin&pwd=Wh1sk3y'"
+foscam_liv_ir_off: "curl -k 'http://192.168.1.12/decoder_control.cgi?command=94&user=admin&pwd=Wh1sk3y'"
+foscam_liv_snap: "curl -k 'http://192.168.1.12/snapshot.cgi?command=94&user=admin&pwd=Wh1sk3y'"
+edimax_back_snap: "curl -k 'http://192.168.1.13/snapshot.jpg?user=[admin]&pwd=[R3n3gad3]&strm=[CHANNEL]'"
+restart_hass: 'curl http://127.0.0.1:8126/container/homeassistant/restart'

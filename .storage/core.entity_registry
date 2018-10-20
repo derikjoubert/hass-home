@@ -1,0 +1,89 @@
+{
+    "data": {
+        "entities": [
+            {
+                "config_entry_id": "44c70532173a4461aa1687803a3cd91c",
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "media_player.bedroom",
+                "name": null,
+                "platform": "cast",
+                "unique_id": "33cbac24-110d-b27c-97dd-974839cb99e0"
+            },
+            {
+                "config_entry_id": "bd4818b57754413c949a20779b10b69c",
+                "device_id": "975b7d99f10f46a18a4cfde2fbe510e1",
+                "disabled_by": null,
+                "entity_id": "media_player.kitchen",
+                "name": null,
+                "platform": "cast",
+                "unique_id": "24e1dfb6-c8f6-acb1-4525-a0a5bd1edecd"
+            },
+            {
+                "config_entry_id": "bd4818b57754413c949a20779b10b69c",
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "media_player.ghm_group",
+                "name": null,
+                "platform": "cast",
+                "unique_id": "37c53692-d444-4593-88bf-a9d89a9fc00a"
+            },
+            {
+                "config_entry_id": "44c70532173a4461aa1687803a3cd91c",
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "media_player.tv",
+                "name": null,
+                "platform": "cast",
+                "unique_id": "f2fc0fd8-3453-43d0-341f-4ab53151be20"
+            },
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "media_player.chrome",
+                "name": null,
+                "platform": "plex",
+                "unique_id": "500nvq20s833sblgq6tb4rs8"
+            },
+            {
+                "config_entry_id": "bd4818b57754413c949a20779b10b69c",
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "media_player.googlehome7691",
+                "name": null,
+                "platform": "cast",
+                "unique_id": "eabfb096-5035-99d8-b11c-eb86ffbbcd94"
+            },
+            {
+                "config_entry_id": "44c70532173a4461aa1687803a3cd91c",
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "media_player.chromecast7888",
+                "name": null,
+                "platform": "cast",
+                "unique_id": "e07fa995-9d60-5678-5e77-29a974ffabe5"
+            },
+            {
+                "config_entry_id": "bd4818b57754413c949a20779b10b69c",
+                "device_id": "ade46aaaecf7408287a94109f4cd7149",
+                "disabled_by": null,
+                "entity_id": "media_player.chromecast8789",
+                "name": null,
+                "platform": "cast",
+                "unique_id": "a1ddf73d-3a3e-d42f-bb9f-4cd857525764"
+            },
+            {
+                "config_entry_id": "bd4818b57754413c949a20779b10b69c",
+                "device_id": "f7d90c1da4ef447cb19277383f0b9093",
+                "disabled_by": null,
+                "entity_id": "media_player.googlehome3137",
+                "name": null,
+                "platform": "cast",
+                "unique_id": "fc88eadf-2a3a-3473-b8f1-d99fb4687961"
+            }
+        ]
+    },
+    "key": "core.entity_registry",
+    "version": 1
+}

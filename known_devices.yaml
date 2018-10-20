@@ -1,0 +1,73 @@
+
+derik:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Derik
+  picture:
+  track: true
+
+barnard:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Barnard
+  picture:
+  track: true
+
+derik_computer:
+  hide_if_away: false
+  icon:
+  mac:
+  name: derik computer
+  picture:
+  track: true
+
+derik_phone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: derik phone
+  picture:
+  track: true
+
+barnard_phone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: barnard phone
+  picture:
+  track: true
+
+redmi:
+  hide_if_away: false
+  icon:
+  mac: BT_F4:60:E2:8D:B2:C9
+  name: Derik Phone BT
+  picture:
+  track: true
+
+
+barnard_kindle:
+  hide_if_away: false
+  icon:
+  mac:
+  name: barnard kindle
+  picture:
+  track: true
+
+derik_tablet:
+  hide_if_away: false
+  icon:
+  mac:
+  name: derik tablet
+  picture:
+  track: true
+
+barnard_redmi:
+  hide_if_away: false
+  icon:
+  mac: BT_EC:D0:9F:12:17:11
+  name: Barnard redmi
+  picture:
+  track: true

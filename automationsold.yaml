@@ -1,0 +1,637 @@
+###########################################
+#
+# Volume Sliders
+#
+###########################################
+
+- alias: "Chromecast Vol"
+  trigger:
+    platform: state
+    entity_id: input_number.chromecast_volume
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id: media_player.chromecast8789
+      volume_level: '{{ states.input_number.chromecast_volume.state | float * 0.09 }}'
+
+- alias: "GHM Kitchen Vol"
+  trigger:
+    platform: state
+    entity_id: input_number.ghm_kitchen_volume
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id: media_player.kitchen
+      volume_level: '{{ states.input_number.ghm_kitchen_volume.state | float * 0.09 }}'
+
+- alias: "GHM Bedroom Vol"
+  trigger:
+    platform: state
+    entity_id: input_number.ghm_bedroom_volume
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id: media_player.googlehome7691
+      volume_level: '{{ states.input_number.ghm_bedroom_volume.state | float * 0.09 }}'
+
+###########################################
+#
+# Big Red Button
+#
+###########################################
+
+- alias: 'Big Red Button'
+  trigger:
+    platform: mqtt
+    topic: button/switch/Switch
+    payload: '1'
+  action:
+    service: homeassistant.toggle
+    entity_id:
+       - switch.computer_screen
+       - switch.computer_lamp
+
+###########################################
+#
+# AMP Input Select
+#
+###########################################
+
+- alias: AMP Input Select AUX
+  trigger:
+    platform: state
+    entity_id: input_select.amp_source
+    to: "AUX"
+  action:
+    service: script.amp_input_aux
+
+- alias: AMP Input Select TV
+  trigger:
+    platform: state
+    entity_id: input_select.amp_source
+    to: "TV"
+  action:
+    service: script.amp_input_tv
+
+- alias: AMP Input Select DVD
+  trigger:
+    platform: state
+    entity_id: input_select.amp_source
+    to: "PC"
+  action:
+    service: script.amp_input_dvd
+    
+- alias: "AUX Audio Selected"
+  trigger:
+    platform: state
+    entity_id: script.amp_input_aux
+  action:
+    service: input_select.select_option
+    entity_id: input_select.amp_source
+    data:
+      option: "AUDIO"
+
+- alias: "TV Audio Selected"
+  trigger:
+    platform: state
+    entity_id: script.amp_input_tv
+  action:
+    service: input_select.select_option
+    entity_id: input_select.amp_source
+    data:
+      option: "TV"
+
+- alias: "PC Audio Selected"
+  trigger:
+    platform: state
+    entity_id: script.amp_input_dvd
+  action:
+    service: input_select.select_option
+    entity_id: input_select.amp_source
+    data:
+      option: "PC"
+
+############################################################
+#
+# TV Input Select
+#
+############################################################
+
+- alias: "TV Input Select Chromecast"
+  trigger:
+    platform: state
+    entity_id: input_select.tv_source
+    to: "Chromecast"
+  action:
+    service: script.tv_input_chromecast
+
+- alias: "TV Input Select Kodi"
+  trigger:
+    platform: state
+    entity_id: input_select.tv_source
+    to: "Kodi"
+  action:
+    service: script.tv_input_kodi
+
+- alias: "Chromecast Selected"
+  trigger:
+    platform: state
+    entity_id: script.tv_input_chromecast
+  action:
+    service: input_select.select_option
+    entity_id: input_select.tv_source
+    data:
+      option: "Chromecast"
+
+- alias: "Kodi Selected"
+  trigger:
+    platform: state
+    entity_id: script.tv_input_kodi
+  action:
+    service: input_select.select_option
+    entity_id: input_select.tv_source
+    data:
+      option: "Kodi"
+
+############################################################
+#
+# RGB Select
+#
+############################################################
+
+- alias: TV Backlight Red
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Red"
+  action:
+    service: script.rgb_red
+
+- alias: TV Backlight Blue
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Blue"
+  action:
+    service: script.rgb_blue
+
+- alias: TV Backlight Green
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Green"
+  action:
+    service: script.rgb_green
+
+- alias: TV Backlight White
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "White"
+  action:
+    service: script.rgb_white
+
+- alias: TV Backlight Yellow
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Yellow"
+  action:
+    service: script.rgb_yellow
+
+- alias: TV Backlight Purple
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Purple"
+  action:
+    service: script.rgb_purple
+
+- alias: TV Backlight Pink
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Pink"
+  action:
+    service: script.rgb_pink
+
+- alias: TV Backlight Navy
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Navy"
+  action:
+    service: script.rgb_navy
+
+- alias: TV Backlight Strobe
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Strobe"
+  action:
+    service: script.rgb_strobe
+    
+- alias: TV Backlight Cycle
+  trigger:
+    platform: state
+    entity_id: input_select.rgb_color
+    to: "Cycle"
+  action:
+    service: script.rgb_cycle
+    
+############################################################
+#
+# Home Assistant GPIO's
+#
+############################################################
+
+# - alias: "Startup Notification LED"
+  # trigger:
+    # platform: homeassistant
+    # event: start
+  # action:
+    # service: homeassistant.turn_on
+    # entity_id: switch.hassio_status_led
+
+# - alias: 'Restart Button'
+  # trigger:
+    # platform: state
+    # entity_id: binary_sensor.pibutton
+  # action:
+    # service: homeassistant.restart
+
+############################################################
+#
+# Passageway Lights 
+#
+############################################################
+
+- alias: 'Passageway Lights Motion'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.passageway_motion
+      to: 'on'
+  condition:
+    - condition: time
+      after: '18:00:00'
+      before: '07:30:00'  
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.passageway_light
+
+- alias: 'Passageway Lights Door'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door
+      to: 'on'
+  condition:
+    - condition: time
+      after: '18:00:00'
+      before: '07:30:00'  
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.passageway_light
+
+- alias: 'Passageway Light Off Timer'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.passageway_motion
+    to: 'off'
+    for:
+      seconds: 60
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.passageway_light
+
+############################################################
+#
+# Kodi Play Fireplace
+#
+############################################################
+
+# - alias: 'Play Media Fireplace'
+  # trigger:
+    # platform: state
+    # entity_id: switch.fireplace
+    # to: "on"
+  # action:
+    # service: media_player.play_media
+    # data:
+      # entity_id: media_player.kodi
+      # media_content_id: "/home/pi/fireplace.mp4"
+      # media_content_type: "video/mp4"
+      
+# - alias: 'Stop Media Fireplace'
+  # trigger:
+    # platform: state
+    # entity_id: switch.fireplace
+    # to: "off"
+  # action:
+    # service: media_player.media_stop
+    # data:
+      # entity_id: media_player.kodi
+
+############################################################
+#
+# Chromecast Auto Volume Down
+#
+############################################################
+
+- alias: 'Auto Volume Down'
+  trigger:
+    - platform: template
+      value_template: "{{ is_state('media_player.chromecast8789', 'off') }}"
+    - platform: template
+      value_template: "{{ is_state('media_player.chromecast8789', 'stop') }}"
+    # - platform: template
+      # value_template: "{{ is_state('media_player.chromecast8789', 'media_pause') }}"
+    # - platform: template
+      # value_template: "{{ is_state('media_player.chromecast8789', 'idle') }}"
+  action:
+    service: media_player.volume_set
+    data:
+      entity_id: media_player.chromecast8789
+      volume_level: 0.2
+
+############################################################
+#
+# Backlight Conditions
+#
+############################################################      
+
+# - alias: 'Turn on Light with TV'
+  # trigger:
+    # platform: state
+    # entity_id: media_player.chromecast8789
+    # from: 'idle'
+    # to: 'playing'
+  # condition:
+    # condition: and
+    # conditions:
+      # - condition: state
+        # entity_id: sun.sun
+        # state: 'below_horizon'
+      # - condition: state
+        # entity_id: switch.television
+        # state: 'on'
+  # action:
+    # service: homeassistant.turn_on
+    # entity_id: script.rgb_state_on
+
+############################################################
+#
+# TV Auto On/Off
+#
+############################################################      
+
+- alias: 'TV Auto On'
+  trigger:
+    platform: state
+    entity_id: media_player.chromecast8789
+    to: 'playing'
+  condition:
+    condition: state
+    entity_id: switch.tv_power
+    state: 'off'
+  action:
+    service: homeassistant.turn_on
+    entity_id: script.media_on
+
+- alias: 'TV Auto Off'
+  trigger:
+    platform: state
+    entity_id: media_player.chromecast8789
+    to: 'off'
+    for:
+      seconds: 600
+  condition:
+    condition: state
+    entity_id: switch.tv_power
+    state: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: script.media_off
+    
+############################################################
+#
+# Bathroom Automations
+#
+############################################################  
+
+- alias: Bathroom Lights Motion
+  trigger:
+    platform: state
+    entity_id: binary_sensor.passageway_motion
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '17:00:00'
+        before: '07:00:00'
+      - condition: state
+        entity_id: switch.television
+        state: 'off'
+      - condition: state
+        entity_id: switch.computer_lamp
+        state: 'off'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bathroom_light
+
+- alias: Bathroom Light Off
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_light
+    to: 'on'
+    for:
+      seconds: 1200
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bathroom_light
+
+- alias: Bathroom Lights Sensor Off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bathroom_door
+    to: 'on'
+  condition:
+    - condition: time
+      after: '17:00:00'
+      before: '07:00:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bathroom_light
+
+- alias: Bathroom Lights Sensor On
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bathroom_door
+    to: 'off'
+  condition:
+    - condition: time
+      after: '17:00:00'
+      before: '07:00:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bathroom_light
+
+############################################################
+#
+# Living Room Automations
+#
+############################################################      
+
+- alias: 'Livingroom Lights Motion'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.livingroom_motion
+      to: 'on'
+  condition:
+    - condition: time
+      after: '17:00:00'
+      before: '07:00:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.livingroom_lights
+
+############################################################
+#
+# Bedroom Automations
+#
+############################################################      
+
+- alias: 'Bedroom Light Motion'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_motion
+      to: 'on'
+  condition:
+    - condition: time
+      after: '07:00:00'
+      before: '23:00:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bedroom_light
+
+- alias: 'Bedroom Lamp Motion'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_motion
+      to: 'on'
+  condition:
+    - condition: time
+      after: '23:00:00'
+      before: '07:00:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.bedroom_lamp
+
+- alias: 'Bedroom Light Off Timer'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bedroom_motion
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bedroom_light
+    
+- alias: 'Bedroom Light Off'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_light
+    to: 'on'
+    for:
+      minutes: 10
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.bedroom_light
+
+############################################################
+#
+# Internet Reset
+#
+############################################################
+
+- alias: 'Connectivity Check'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.ping_binary_sensor
+    to: 'disconnected'
+    for:
+      minutes: 10
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.fiber_box
+    - service: notify.notify
+      data:
+        message: "Internet Restarted!"
+        title: "Net Notify"
+
+- alias: 'Connectivity Notify'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.ping_binary_sensor
+    to: 'connected'
+  action:
+    - service: notify.notify
+      data:
+        message: "Internet Restarted!"
+        title: "Net Notify"
+        
+############################################################
+#
+# RF Rules
+#
+############################################################
+
+- alias: Reset RF Motion State
+  hide_entity: true
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_motion
+    to: 'on'
+    for:
+      seconds: 5
+  action:
+  - service: mqtt.publish
+    data:
+      topic: home/OpenMQTTGateway/433toMQTT
+      payload: 15906678off
+
+############################################################
+#
+# Night Time Rules
+#
+############################################################
+
+- alias: Night Time Rules
+  trigger:
+    platform: state
+    entity_id: binary_sensor.livingroom_motion
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.passageway_motion
+        state: 'on'
+      - condition: time
+        after: '23:00:00'
+        before: '09:00:00'
+      - condition: state
+        entity_id: switch.television
+        state: 'off'
+      - condition: state
+        entity_id: switch.computer_lamp
+        state: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.bathroom_light
+    - service: homeassistant.turn_off
+      entity_id: switch.livingroom_lights
+    - service: homeassistant.turn_off
+      entity_id: switch.kitchen_lights

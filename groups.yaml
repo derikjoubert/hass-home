@@ -1,0 +1,322 @@
+############################################################################
+#
+# Main Page View
+#
+############################################################################
+
+# default_view:
+  # view: yes
+  # icon: mdi:home
+  # entities:
+    # - group.amp_remote
+    # - group.tv_remote
+    # - group.master_volume
+    # - group.quick_scripts
+    # - group.power_switches
+    # - group.bedroom
+    # - group.time_zones
+    # - group.staircase
+    # - group.who_is_home
+    # # - group.lan_devices
+    # - group.system
+    # - group.media_devices
+
+############################################################################
+#
+# Quick Scripts
+#
+############################################################################
+
+Quick Scripts:
+  control: hidden
+  entities:
+  - script.media_on
+  - script.media_off
+  - script.restart_home_assistant
+  - switch.bedroom_lamp
+
+############################################################################
+#
+# AMP Remote
+#
+############################################################################
+
+amp_remote:
+  name: AMP Remote
+  control: hidden
+  entities:
+  - switch.amp_power
+  - input_select.amp_source
+  - script.amp_mute
+  - script.amp_vol_jump_up
+  - script.amp_vol_jump_down
+  view: false
+
+############################################################################
+#
+# TV Remote
+#
+############################################################################
+
+tv_remote:
+  name: TV Remote
+  control: hidden
+  entities:
+  - switch.tv_power
+  - input_select.tv_source
+  - switch.backlight_power
+  - input_select.rgb_color
+  view: false
+
+############################################################################
+#
+# Master Volume
+#
+############################################################################
+
+master_volume:
+  name: Master Volume
+  control: hidden
+  entities:
+  - input_number.chromecast_volume
+  - input_number.ghm_kitchen_volume
+  - input_number.ghm_bedroom_volume
+
+############################################################################
+#
+# Docker Control
+#
+############################################################################
+
+docker_containers:
+  name: Docker Containers
+  control: hidden
+  entities:
+    - switch.mosquitto
+    - switch.home_assistant
+    - switch.portainer
+    - switch.dockermon
+    - switch.phlex_tv
+    - switch.plex_server
+
+############################################################################
+#
+# Computer Switches
+#
+############################################################################
+
+# Computer:
+  # # control: hidden
+  # entities:
+  # - switch.derik_pc
+  # - switch.computer_lamp
+  # - switch.computer_screen
+  # - script.pc_hibernate
+  # - script.pc_restart
+  # - script.pc_shutdown
+  # - script.start_stream
+  # - script.stop_stream
+
+############################################################################
+#
+# Lights Master
+#
+############################################################################
+
+Lights Master:
+  control: hidden
+  entities:
+  - switch.passageway_light
+  - switch.bathroom_light
+  - switch.livingroom_lights
+  - switch.kitchen_lights
+  - switch.outside_lights
+  - switch.bedroom_light
+  - switch.bedroom_lamp
+  
+############################################################################
+#
+# Living Room
+#
+############################################################################
+
+Living Room:
+  control: hidden
+  entities:
+  - switch.livingroom_lights
+  - switch.kitchen_lights
+  - switch.outside_light
+  - binary_sensor.livingroom_motion
+  - sensor.livingroom_temperature
+  # - switch.living_room_fan
+  # - switch.quartz
+
+############################################################################
+#
+# Bedroom
+#
+############################################################################
+  
+Bedroom:
+  control: hidden
+  entities:
+  - switch.bedroom_light
+  - switch.bedroom_lamp
+  - binary_sensor.bedroom_motion
+  - sensor.bedroom_temperature
+
+############################################################################
+#
+# Sensors
+#
+############################################################################
+  
+Sensors Misc:
+  control: hidden
+  entities:
+  - binary_sensor.pibutton
+  - binary_sensor.workday_sensor
+  - binary_sensor.front_door
+  - binary_sensor.passageway_motion
+  - input_boolean.trigger_first_morning
+  - sun.sun
+  - sensor.yr_symbol
+  - sensor.big_red_button
+  - binary_sensor.ping_binary_sensor
+  - binary_sensor.openmqttgateway
+  - sensor.mqtt_rf_temperature
+  - sensor.mqtt_rf_humidity
+  - binary_sensor.rf_motion_sensor
+  - binary_sensor.bathroom_door
+
+############################################################################
+#
+# Cameras
+#
+############################################################################
+
+# Cameras:
+  # control: hidden
+  # entities:
+  # - camera.living_room
+  # - camera.back_yard
+  # - script.foscamliv_front
+  # - script.foscamliv_back
+  # - script.foscamliv_ir_on
+  # - script.foscamliv_ir_off
+  # - script.edimax_screenshot
+  # - script.foscam_screenshot
+
+############################################################################
+#
+# Media Devices
+#
+############################################################################
+  
+# media_devices:
+  # name: Media Players
+  # control: hidden
+  # entities:
+  # - media_player.tv
+  # - media_player.kodi
+  # - media_player.kitchen
+  # - media_player.bedroom
+  # view: false
+
+############################################################################
+#
+# Device Tracker / Who's Home
+#
+############################################################################
+  
+Who is Home:
+  name: "Device Trackers"
+  entities:
+  - device_tracker.derik
+  - device_tracker.derik_phone
+  - device_tracker.redmi
+  - device_tracker.derik_tablet
+  - device_tracker.derik_computer
+  - device_tracker.barnard
+  - device_tracker.barnard_phone
+  - device_tracker.barnard_computer
+  - device_tracker.barnard_mac
+  - device_tracker.barnard_kindle
+  
+############################################################################
+#
+# Time Zones
+#
+############################################################################
+  
+Time Zones:
+  entities:
+   - sensor.cape_town_sa
+   - sensor.st_louis_mo_usa
+   
+############################################################################
+#
+# System Info
+#
+############################################################################
+   
+System:
+  control: hidden
+  entities:
+  - switch.hassio_status_led
+  - sensor.processor_use
+  - sensor.memory_free
+  - sensor.disk_free_home
+  - sensor.last_boot
+  - updater.updater
+
+############################################################################
+#
+# Edits / Hide
+#
+############################################################################  
+
+RGB Lights:
+  control: hidden
+  entities:
+  - script.rgb_strobe
+  - script.rgb_cycle
+  - script.rgb_white
+  - script.rgb_red
+  - script.rgb_green
+  - script.rgb_blue
+  - script.rgb_orange
+  - script.rgb_yellow
+  - script.rgb_navy
+  - script.rgb_purple
+  - script.rgb_pink
+  - script.backlight_cycle
+  - script.backlight_strobe
+
+State Check:
+  control: hidden
+  entities:
+  - script.amp_state_on
+  - script.amp_state_off
+  - script.tv_state_on
+  - script.tv_state_off
+  - script.rgb_state_on
+  - script.rgb_state_off
+
+Automations:
+  control: hidden
+  entities:
+  - automation.tv_backlight_blue
+  - automation.tv_backlight_cycle
+  - automation.tv_backlight_green
+  - automation.tv_backlight_navy
+  - automation.tv_backlight_pink
+  - automation.tv_backlight_purple
+  - automation.tv_backlight_red
+  - automation.tv_backlight_strobe
+  - automation.tv_backlight_white
+  - automation.tv_backlight_yellow
+  - automation.amp_input_select_aux
+  - automation.amp_input_select_dvd
+  - automation.amp_input_select_tv
+  - automation.aux_audio_selected

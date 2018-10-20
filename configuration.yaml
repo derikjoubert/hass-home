@@ -1,0 +1,370 @@
+#################################################################
+#
+# GENERAL 
+#
+#################################################################
+
+homeassistant:
+  name: Home
+  latitude: -33.9258
+  longitude: 18.4232
+  elevation: 1.590
+  unit_system: metric
+  time_zone: Africa/Johannesburg
+  customize: !include customize.yaml
+
+#################################################################
+#
+# ENABLE  
+#
+#################################################################
+
+frontend:
+config:
+sun:
+conversation:
+updater:
+http:
+  # base_url: sanctumsanctorum.duckdns.org:8123
+  # ssl_certificate: /ssl/fullchain.pem
+  # ssl_key: /ssl/privkey.pem
+  api_password: REDACTED
+  # base_url: http://192.168.1.38:8123/api/spotify
+  #server_port: 443
+# hassio:
+history:
+logbook:
+discovery:
+
+#################################################################
+#
+# Logger (Exclude Camera Errors)
+#
+#################################################################
+
+logger:
+  default: warning
+  logs:
+    urllib3.connectionpool: error
+    netdisco.ssdp: error
+    pychromecast.socket_client: error
+    pychromecast: error
+
+#################################################################
+#
+# Cloud
+#
+#################################################################
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - script.amp_vol_jump_up
+        - script.amp_vol_jump_down
+        - script.media_on
+        - script.media_off
+        - script.movie_mode
+        - script.restart_home_assistant
+        - script.tv_input_chromecast
+        - script.tv_input_kodi
+        - switch.amp_power
+        - switch.backlight_power
+        - switch.bathroom_light
+        - switch.bedroom_lamp
+        - switch.bedroom_light
+        - switch.computer_lamp
+        - switch.computer_screen
+        - switch.my_computer
+        - switch.passageway_light
+        - switch.tv_power
+        - switch.livingroom_lights
+        - switch.kitchen_lights
+        - switch.outside_lights
+    # entity_config:
+      # script.media_off:
+        # name: "Media shutdown protocol"
+        # aliases:
+         # - switch media off
+         # - off media
+      # script.media_on:  
+        # name: "Media startup protocol"
+        # aliases:
+         # - switch media on
+         # - on media
+         # - movie mode
+
+#################################################################
+#
+# INCLUDE  
+#
+#################################################################
+
+group: !include groups.yaml
+automation: !include automations.yaml
+automation old: !include automationsold.yaml
+script: !include scripts.yaml
+switch: !include switch.yaml
+shell_command: !include shell.yaml
+sensor: !include sensor.yaml
+
+#################################################################
+#
+# MQTT
+#
+#################################################################
+
+mqtt:
+  broker: localhost
+  port: 1883
+  client_id: Home_Assistant
+  keepalive: 60
+  username: admin
+  password: admin
+
+#################################################################
+#
+# TTS 
+#
+#################################################################
+
+tts:
+  - platform: google
+    language: 'en-uk'
+
+#################################################################
+#
+# MEDIA PLAYER
+#
+#################################################################
+
+media_player:
+  - platform: kodi
+    host: 192.168.1.3
+  # - platform: spotify
+    # client_id: "1ea09d856cb84b64a10f02a76a8385e5"
+    # client_secret: "4f2df9a8d0f340a6b3e3ef933f267148"
+    # aliases:
+        # abc123def456: 'Living Room'
+        # 9183abas000: 'Bed Room'
+  # - platform: cast
+    # host: 192.168.1.9
+  # - platform: cast
+    # host: 192.168.1.10
+  # - platform: cast
+    # host: 192.168.1.11
+    
+#################################################################
+#
+# TRACKER
+#
+#################################################################
+    
+device_tracker:
+  - platform: ping
+    hosts:
+      derik_phone: 192.168.1.7
+  - platform: ping
+    hosts:
+      derik_computer: 192.168.1.6
+  - platform: ping
+    hosts:
+      derik_tablet: 192.168.1.15
+  - platform: ping
+    hosts:
+      barnard_phone: 192.168.1.8
+  - platform: ping
+    hosts:
+      barnard_computer: 192.168.1.14
+  - platform: ping
+    hosts:
+      barnard_mac: 192.168.1.16
+  - platform: ping
+    hosts:
+      barnard_kindle: 192.168.1.17
+  - platform: bluetooth_tracker
+    request_rssi: true
+  # - platform: bluetooth_le_tracker
+      
+#################################################################
+#
+# Input Select 
+#
+#################################################################
+
+input_select:
+  amp_source:
+    name: AMP Source
+    options:
+      - SELECT
+      - TV
+      - PC
+      - AUDIO
+    icon: mdi:remote
+  tv_source:
+    name: TV Source
+    options:
+      - SELECT
+      - Chromecast
+      - Kodi
+    icon: mdi:remote
+  rgb_color:
+    name: Backlight Color
+    options:
+      - SELECT
+      - Cycle
+      - Strobe
+      - White
+      - Red
+      - Green
+      - Blue
+      - Yellow
+      - Purple
+      - Pink
+      - Orange
+      - Navy
+    icon: mdi:remote
+
+#################################################################
+#
+# Input Slider/Number
+#
+#################################################################    
+    
+input_number:
+  chromecast_volume:
+    name: Chromecast
+    initial: 3
+    min: 0
+    max: 10
+    step: 1
+  ghm_kitchen_volume:
+    name: GHM Kitchen
+    initial: 5
+    min: 0
+    max: 10
+    step: 1
+  ghm_bedroom_volume:
+    name: GHM Bedroom
+    initial: 5
+    min: 0
+    max: 10
+    step: 1
+
+#################################################################
+#
+# Binary Sensor
+#
+#################################################################
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: "frontdoor/motion/Switch"
+    name: "Passageway Motion"
+    payload_on: 1
+    payload_off: 0
+    device_class: motion
+  - platform: mqtt
+    state_topic: "Livingroomlights/motion/Switch"
+    name: "Livingroom Motion"
+    payload_on: 1
+    payload_off: 0
+    device_class: motion
+  - platform: mqtt
+    state_topic: "esp07/motion/Switch"
+    name: "Bedroom Motion"
+    payload_on: 1
+    payload_off: 0
+    device_class: motion
+  - platform: mqtt
+    state_topic: "frontdoor/sensor/Switch"
+    name: "Front Door"
+    payload_on: 1
+    payload_off: 0
+    device_class: door
+  - platform: ping
+    host: 8.8.8.8
+    scan_interval: 5
+  # - platform: rpi_gpio
+    # ports:
+      # 5: PiButton
+    # value_high: "On"
+    # value_low: "Off"
+    # invert_logic: true
+  - platform: workday
+    country: ZA
+    workdays: [ mon, tue, wed, thu, fri ]
+  - platform: mqtt
+    name: "OpenMQTTGateway"
+    state_topic: "home/OpenMQTTGateway/LWT"
+    payload_on: "Online"
+    payload_off: "Offline"
+    device_class: "connectivity"
+  # - platform: mqtt
+    # name: "RF Motion Sensor"
+    # state_topic: "home/OpenMQTTGateway/433toMQTT"
+    # payload_on: "15906678"
+    # payload_off: "15906678off"
+    # device_class: Motion
+    # optimistic: false
+    # qos: 1
+    # retain: false
+  - platform: mqtt
+    name: "Bathroom Door"
+    state_topic: "home/OpenMQTTGateway/433toMQTT"
+    payload_on: "13655790"
+    payload_off: "13655783"
+    device_class: opening
+    # optimistic: false
+    qos: 0
+    retain: true
+    
+#################################################################
+#
+# Google Assistant
+#
+#################################################################        
+
+
+
+#################################################################
+#
+# Media Extractor
+#
+#################################################################
+
+# media_extractor:
+  # customize:
+    # media_player.tv:
+      # video: best
+      # music: bestaudio[ext=mp3]
+
+#################################################################
+#
+# Cameras
+#
+#################################################################
+
+camera 1:
+  - platform: mjpeg
+    mjpeg_url: "http://192.168.1.12/videostream.cgi?user=admin&pwd=REDACTED"
+    name: "Living Room"
+
+camera 2:
+  - platform: mjpeg
+    mjpeg_url: "http://192.168.1.13/mjpg/video.mjpg"
+    name: "Back Yard"
+    username: admin
+    password: REDACTED
+    authentication: basic
+
+#################################################################
+#
+# Notify
+#
+#################################################################
+
+notify:
+  - platform: pushbullet
+    name: Home-Assistant
+    api_key: REDACTED

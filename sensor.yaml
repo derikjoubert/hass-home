@@ -1,0 +1,74 @@
+#################################################################
+#
+# Date&Time
+#
+#################################################################
+
+- platform: worldclock
+  time_zone: Africa/Johannesburg
+  name: Cape Town, SA
+- platform: worldclock
+  time_zone: America/Chicago
+  name: "St. Louis, MO, USA"
+
+#################################################################
+#
+# SYSMon 
+#
+#################################################################
+
+- platform: systemmonitor
+  resources:
+    - type: last_boot
+    - type: disk_free
+      arg: /home
+    - type: memory_free
+    - type: processor_use
+
+#################################################################
+#
+# MQTT Sensors
+#
+#################################################################
+
+- platform: mqtt
+  name: "Livingroom Temperature"
+  state_topic: "Livingroomlights/temp/Temperature"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | round(2)  }}'
+- platform: mqtt
+  state_topic: "button/switch/Switch"
+  name: "Big Red Button"
+- platform: mqtt
+  name: "Bedroom Temperature"
+  unit_of_measurement: "°C"
+  state_topic: "ESP_UPS/temp/Temperature"
+- platform: mqtt
+  name: "MQTT RF Temperature"
+  state_topic: "home/OpenMQTTGateway/DHTtoMQTT/dht1/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | round(2)  }}'
+
+# - platform: mqtt
+  # name: "MQTT RF Humidity"
+  # state_topic: "home/OpenMQTTGateway/DHTtoMQTT/dht1/hum"
+  # unit_of_measurement: "%"
+  # value_template: '{{ value | round(2)  }}'
+# - platform: mqtt
+  # name: "Bedroom Humidity"
+  # unit_of_measurement: '%'
+  # state_topic: "ESP_UPS/temp/Humidity"
+# - platform: mqtt
+  # state_topic: "Note3/battery/%BATT"
+  # name: "Phone Battery"
+  # unit_of_measurement: "%"
+  # value_template: '{{ value_json.batt }}'
+  # device_class: battery
+
+#################################################################
+#
+# Weather
+#
+#################################################################
+
+- platform: yr

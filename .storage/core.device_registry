@@ -1,0 +1,76 @@
+{
+    "data": {
+        "devices": [
+            {
+                "config_entries": [
+                    "bd4818b57754413c949a20779b10b69c"
+                ],
+                "connections": [],
+                "id": "ade46aaaecf7408287a94109f4cd7149",
+                "identifiers": [
+                    [
+                        "cast",
+                        "a1ddf73d3a3ed42fbb9f4cd857525764"
+                    ]
+                ],
+                "manufacturer": "Google Inc.",
+                "model": "Chromecast",
+                "name": "TV",
+                "sw_version": null
+            },
+            {
+                "config_entries": [
+                    "bd4818b57754413c949a20779b10b69c"
+                ],
+                "connections": [],
+                "id": "975b7d99f10f46a18a4cfde2fbe510e1",
+                "identifiers": [
+                    [
+                        "cast",
+                        "24e1dfb6c8f6acb14525a0a5bd1edecd"
+                    ]
+                ],
+                "manufacturer": "Google Inc.",
+                "model": "Google Home Mini",
+                "name": "Kitchen",
+                "sw_version": null
+            },
+            {
+                "config_entries": [
+                    "bd4818b57754413c949a20779b10b69c"
+                ],
+                "connections": [],
+                "id": "d82fc74c998342a59f3c28b9dab9bfa7",
+                "identifiers": [
+                    [
+                        "cast",
+                        "eabfb096503599d8b11ceb86ffbbcd94"
+                    ]
+                ],
+                "manufacturer": "Google Inc.",
+                "model": "Google Home Mini",
+                "name": "Bedroom",
+                "sw_version": null
+            },
+            {
+                "config_entries": [
+                    "bd4818b57754413c949a20779b10b69c"
+                ],
+                "connections": [],
+                "id": "f7d90c1da4ef447cb19277383f0b9093",
+                "identifiers": [
+                    [
+                        "cast",
+                        "fc88eadf2a3a3473b8f1d99fb4687961"
+                    ]
+                ],
+                "manufacturer": "",
+                "model": "Google Home Mini",
+                "name": "GoogleHome3137",
+                "sw_version": null
+            }
+        ]
+    },
+    "key": "core.device_registry",
+    "version": 1
+}

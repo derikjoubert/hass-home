@@ -1,0 +1,593 @@
+############################################################################
+#
+# HOME ASSISTANT RESTART 
+#
+############################################################################
+
+restart_home_assistant:
+  alias: "Restart Home Assistant"
+  sequence:
+      service: homeassistant.restart
+
+############################################################################
+#
+# TV IR / BROADLINK
+#
+############################################################################
+
+tv_input_kodi:
+  alias: "TV Input Chromecast"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet: 
+          - "JgBIAB0bOBwdGR0bHBwbHB0ZHjU4Nh0aOQAK9B0bNxwdGxwbHBodHBwaHDM7NxwcOAAK8x0bOBsdGx0aHBwcGxwaHjU3OBwaOQANBQ=="
+tv_input_chromecast:
+  alias: "TV Input Kodi"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet: 
+          - "JgBIABwaHRs5GxwbHRodGxwbHDc3Nh0bOQAK9B0aHRo5Gx0bHBsdGhwbHDc3Nx0aOQAK8SEbGxs4Gx0bHBscGx0bHDY4Nh4aOAANBQ=="
+# tv_vol_up:
+  # alias: "TV Volume +"
+  # sequence:
+    # - service: switch.broadlink_send_packet_192_168_1_5
+      # data:
+        # packet: 
+          # - "JgA0AB4ZORwcGh4ZHRwbGxwcHDU5GxwbHhkdAAr2HRs5GxwaHhodGhwbHhkdNjgcHRkcHBwADQUAAAAA=="
+# tv_vol_down:
+  # alias: "TV Volume -"
+  # sequence:
+    # - service: switch.broadlink_send_packet_192_168_1_5
+      # data:
+        # packet: 
+          # - "JgA0ABwbHBs3HB4aHBwbGx0aHDY6Gh4ZHzMdAArbHRsdGjgbHRscHBwbHRocNjkaHRscNh0ADQUAAAAA=="   
+         
+############################################################################
+#
+# AMP IR / BROADLINK
+#
+############################################################################
+
+amp_input_tv:
+  alias: "AMP Input TV"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet: 
+          - "JgDYAAABF4oSMxESETQTEBIREjMTEBIzExAQNRISETMTMxESEjQSEREREhERNBMyERMREhESEhASNBE0EhEREhEzEzMSMxIzEwADPAABF4sSMxEREjQSEhASEjQSERIyExERMxIRFDETNBMPEjMQExISEBMQNRQwERMREhESEBMRNBIzEhATERE0EjQTMhIzEgADPAABF4sRNBMQEjMUDxISEjITEBI0EhERNBESEjMSMxISEjMREhASExASNBIzERIRERISEQ0YMhI0ExARExAzEzMRNBE1EQANBQ=="
+amp_input_dvd:
+  alias: "AMP Input PC"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet: 
+          - "JgDYAAABF4oSMxIREzMSERIRETURERE1ERESMBURFTETMhISEjISERIzEhESNBIRERETERERETQTEBI0EhIRNBUrGDETMxIREwADPAABFooSNBMQEjMUDRQSEjIRExEzExASMxMQEzMTMxEREzISEhAzFRARNBIREhESERESEDUSEhA1ERIRMxQyETQRNBISEQADPQABFooUMhIRETQSERISETMTERIxFBIRMxEREzQSMhMREjMREhE0EhERNRIQExASERIPEzQQExI0ERESMxIyFDMTMRMQFAANBQ=="
+amp_input_aux:
+  alias: "AMP Input Aux"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet: 
+          - "JgBIAAABKZQTOBITEzcTFBISEjgTExI4ExMSOBITEjgUNxIUEjcVERI4EjgTOBM3FBISExI4ExMSFBEUEhMSExE5EjgUEhE5EgANBQ=="
+amp_vol_up:
+  alias: "AMP Volume +"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet: 
+          - "JgDYAAABFosRNREREzMRExASETQRERE1ERQQNBIPETUTMxIREzESEhESETQSEBMzEhEVDhETEBISMxAUEjITEBMyETUTMhIzEgADPgABFooSMxMQEjQREhIREi8VERQxERMSMxESEjQTMRMQEzQVDBMSEDQSERE0ERMRERMQEhATNBASEzISERIzEjQSNBEzEQADPgABFosSNBESETQSEBIREzISEhE1ERESMxESEjMTMhISETQSERESEjQREhE0ERMOFBESERERNRETETMSEBMyEzMRNQ81EgANBQ=="
+amp_vol_down:
+  alias: "AMP Volume -"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet: 
+          - "JgDYAAABF4oSMxIREjMSEhESETMTERIzEhETMhYNEjMSNBIQEzMSEhIyEjMSERYwEhERERETERIREhESDTgREhEzEjQSNBIyFwADOAABGIgUMhISETIUERMQEjMTEBMzERISMxIQEjQRNBIREjQSEREyEzMSEhE0EhIRDxMSEhEREhEREjMTBxwzEDYSMhQuFgADPAABGIoXLhIREjMTEBMQETQRExE0ERISMhIREjQSMxIRFDEREhMzETQRExA0ExASERIRERISEhEQEjQREhI0ETQSMhUxEgANBQ=="
+amp_mute:
+  alias: "AMP Mute"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet: 
+          - "JgDYAAABFooTMxMQEjMSERETETMSERIzExASNBQPEjMTMhQPEzITEBISETQSEBIREzMUDxMQEhASNBIREjMSMxMREjIUMhMyEwADPAABFosSMxMREjISERISETMSERIzExESMxIREjMSMxMQEzITEBISEzITEBIREzITEBIRExASMxQPEjMSMxUOETQTMxIzEgADPQABF4oTMhISETMTEBIREjQVDRI0EhESMxIREzISMhMREjQUDxIQEjQSERMQEjMVDxEREhESMxIRETQTMhMREzITMhE0EgANBQ=="
+
+############################################################################
+#
+# TV RGB Color / BROADLINK
+#
+############################################################################
+          
+rgb_strobe:
+  alias: "Strobe"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBaAAABKZURExMUEhITEhMSEhQRExIUETgSOBE3EjgTExE3FDUTOBI2EjcTOBI2ERURExMTEhQRExISFBITFBE2FTQTNxM1FAAFPQABJ0oUBgkADDYAAShLFAANBQAAAAAAAAAAAAAAAAAA=="
+rgb_cycle:
+  alias: "Color Cycle"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBYAAABJ5QTERMUEhMSEhMTEhMTExIREzcSOBM3ETcTExI3EjgSNhQ2EzUTFBITETcTExEUEhQRExMTEjcTNRMUEjcRORI2EwAFPgABJ0oTAAxGAAEoShIADQU=="
+rgb_red:
+  alias: "Red"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBYAAABKJQSExMSExMSFBEUEBQUExAVETgSNhM2EzcSEhQ2EjcTNxITEhMSNhQSEhQSExEUEhMSNxI3ExMSNxM2EzYUNhM2EwAFPAABJ0oSAAxIAAEoSxIADQU=="
+rgb_green:
+  alias: "Green"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBQAAABKJQTEhMTEhYQEhITEhMTERMTEjgSNhQ2EzcSExI2EzgTNhI3ERQTNhMTEhMSFBETExMSExI3ExISNhQ3EjcTNRQ4EQAFPgABJUwTAA0FAAAAAAAAAAA=="
+rgb_blue:
+  alias: "Blue"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBYAAABKJMTFBETEhQSExEVERQSDxUUETgSNxI3FDcRFBE3FDYQOBIYDjgSNxUPExMUERMTEhMSNhQXDRMUNxE3EjcRORI3EgAFPgABKEoSAAxMAAEnSxAADQU=="
+rgb_white:
+  alias: "White"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBYAAABKZMUERQSExITEhQSEhMSExMSEzYTNhM2FTUTEhQ1EzYUNhQ1EzYUNhMTEhISFBMSExIUERMUERITNhM2EzcUNRQ1EwAFOAABKkgTAAxCAAEpSRMADQU=="
+rgb_orange:
+  alias: "Orange"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBYAAABKZMUEhITExITExETExITEhMSEzcSNhQ2EjcTExI2EzYTNxMSFBISEhQ1FBITERMTExITNhU0FDUTExM2FDUTNxI2FAAFPAABKEgUAAxGAAEoShIADQU=="
+rgb_yellow:
+  alias: "Yellow"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBYAAABKJQUEBQRExMTEhMTEhMSExITEjcTNxI2EzcUERM2EzcTNhMTEhMSExMSEjcTEhMTEhITNxI3EzYTNhQTEjcSNxM1FAAFPAABJ0oVAAxGAAEqSRMADQU=="
+rgb_navy:
+  alias: "Navy"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBQAAABKJQTEhISExMTEhITExITEhMTEzUTNhQ2FDYTERM3FDUTNxM1FBMRFBMSEjcTExITEhITExI3FDYTNRMSFDYUNhI3EwAFPAABKEoTAA0FAAAAAAAAAAA=="
+rgb_purple:
+  alias: "Purple"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBQAAABKpITExMSEhMTExMSERQTEhISFTUTNxA4FDYTExI2EzYTNxMTEjYUNRU1FRESExITEhMUNhITEhMSExQ0FDcRNxM3EwAFPAABKEkTAA0FAAAAAAAAAAA=="
+rgb_pink:
+  alias: "Pink"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_5
+      data:
+        packet:
+         - "JgBQAAABKZMTEhQRExMSExITExITEhITEzYTNxI3EzcUERI2FTUTNxMSEjcTNhQSEzYTEhMTEhMSNhMTFBEUNRIUEjYUNhM2FAAFOwABKUoSAA0FAAAAAAAAAAA=="
+ 
+############################################################################
+#
+# Sleep Mode
+#
+############################################################################
+
+# sleep_mode:
+  # alias: "Sleep Mode"
+  # sequence:
+    # - service: script.tv_state_off
+    # - service: script.amp_state_off
+    # # - service: script.computer_off
+    # - service: homeassistant.turn_off
+      # data:
+        # entity_id: switch.fireplace
+    # - service: script.rgb_state_off
+    # - service: media_player.turn_off
+      # entity_id: media_player.tv
+
+############################################################################
+#
+# Media Off
+#
+############################################################################
+
+media_off:
+  alias: "Media Shutdown Protocol"
+  sequence:
+    - service: script.tv_state_off
+    - service: script.amp_state_off
+    - service: script.rgb_state_off
+    - service: media_player.turn_off
+      entity_id: media_player.tv
+
+############################################################################
+#
+# Media On
+#
+############################################################################
+
+media_on:
+  alias: "Movie Mode"
+  sequence:
+    - service: script.tv_state_on
+    - service: script.amp_state_on
+    
+############################################################################
+#
+# All The Things
+#
+############################################################################
+
+# all_the_things:
+  # alias: "All The Things"
+  # sequence:
+    # - service: script.tv_state_on
+    # - service: script.amp_state_on
+    # - service: homeassistant.turn_on
+      # data:
+        # entity_id: switch.computer_lamp
+    # - service: homeassistant.turn_on
+      # data:
+        # entity_id: switch.computer_screen
+        
+############################################################################
+#
+# Music Mode 
+#
+############################################################################
+
+# music_mode:
+  # alias: "Music Mode"
+  # sequence:
+    # - service: script.amp_state_on
+    # - service: script.amp_input_dvd
+  
+############################################################################
+#
+# Game Mode 
+#
+############################################################################
+
+# game_mode:
+  # alias: "Game Mode"
+  # sequence:
+    # - service: script.tv_state_on
+    # - service: script.amp_state_on
+    # # - service: script.amp_input_tv
+    # # - service: script.computer_on
+    # - service: shell_command.start_steam
+    # - service: script.tv_input_kodi
+    # - service: media_player.turn_off
+      # entity_id: media_player.tv
+    # - service: script.amp_vol_jump_down
+    # - service: script.amp_vol_jump_down
+        
+############################################################################
+#
+# Check TV State And Toggle
+#
+############################################################################
+        
+tv_state_on:
+  alias: "State Turn TV On"
+  sequence:
+    - condition: state
+      entity_id: switch.tv_power
+      state: 'off'
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.tv_power
+tv_state_off:
+  alias: "State Turn TV Off"
+  sequence:
+    - condition: state
+      entity_id: switch.tv_power
+      state: 'on'
+    - service: homeassistant.turn_off
+      data:
+        entity_id: switch.tv_power
+        
+############################################################################
+#
+# Check AMP State And Toggle
+#
+############################################################################
+
+amp_state_on:
+  alias: "State Turn AMP On"
+  sequence:
+    - condition: state
+      entity_id: switch.amp_power
+      state: 'off'
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.amp_power
+amp_state_off:
+  alias: "State Turn AMP Off"
+  sequence:
+    - condition: state
+      entity_id: switch.amp_power
+      state: 'on'
+    - service: homeassistant.turn_off
+      data:
+        entity_id: switch.amp_power
+
+############################################################################
+#
+# Check Backlight State And Toggle
+#
+############################################################################
+
+rgb_state_on:
+  alias: "State Turn Backlight On"
+  sequence:
+    - condition: state
+      entity_id: switch.backlight
+      state: 'off'
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.backlight
+rgb_state_off:
+  alias: "State Turn Backlight Off"
+  sequence:
+    - condition: state
+      entity_id: switch.backlight
+      state: 'on'
+    - service: homeassistant.turn_off
+      data:
+        entity_id: switch.backlight
+        
+############################################################################
+#
+# AMP Volume Jump +/-
+#
+############################################################################
+        
+amp_vol_jump_up:
+  alias: "AMP Volume Jump +"
+  sequence:
+    - service: script.amp_vol_up
+    - service: script.amp_vol_up
+    - service: script.amp_vol_up
+    - service: script.amp_vol_up
+    - service: script.amp_vol_up
+amp_vol_jump_down:
+  alias: "AMP Volume Jump -"
+  sequence:
+    - service: script.amp_vol_down
+    - service: script.amp_vol_down
+    - service: script.amp_vol_down
+    - service: script.amp_vol_down
+    - service: script.amp_vol_down
+
+############################################################################
+#
+# Restart Home Assistant via Dockermon
+#
+############################################################################
+
+restart_hass:
+  alias: Restart Home Assistants
+  sequence:
+    - service: shell_command.restart_hass
+
+############################################################################
+#
+# Backlight Cycle
+#
+############################################################################
+
+# backlight_cycle:
+  # alias: "Backlight Cycle"
+  # sequence:
+    # - service: script.rgb_state_on
+    # - service: script.rgb_cycle
+
+############################################################################
+#
+# Backlight Strobe
+#
+############################################################################
+
+# backlight_strobe:
+  # alias: "Backlight Strobe"
+  # sequence:
+    # - service: script.rgb_state_on
+    # - service: script.rgb_strobe
+
+############################################################################
+#
+# Computer Controls
+#
+############################################################################        
+
+# pc_hibernate:
+  # alias: "PC Hibernate"
+  # sequence:
+    # - service: shell_command.computer_hibernate
+
+# pc_restart:
+  # alias: "PC Restart"
+  # sequence:
+    # - service: shell_command.computer_restart
+
+# pc_shutdown:
+  # alias: "PC Shutdown"
+  # sequence:
+    # - service: shell_command.computer_shutdown
+
+# start_stream:
+  # alias: "Start Steam"
+  # sequence:
+    # - service: shell_command.start_steam
+
+# stop_stream:
+  # alias: "Stop Steam"
+  # sequence:
+    # - service: shell_command.stop_steam
+
+############################################################
+#
+# Chromecast Video Play Test
+#
+############################################################
+
+# backinblack:
+  # alias: "Back In Black"
+  # sequence:
+    # service: media_player.play_media
+    # data:
+      # entity_id: media_player.kitchen_home_mini
+      # media_content_type: music
+      # media_content_id: "http://192.168.1.4:8123/local/backinblack.mp3"
+
+# firetest2:
+  # alias: "Fire Test 2"
+  # sequence:
+    # service: media_player.play_media
+    # data:
+      # entity_id: media_player.tv
+      # media_content_type: video
+      # media_content_id: "http://192.168.1.4:8123/local/fireplace.mp4"
+
+# youtube:
+  # sequence:
+    # - service: media_extractor.play_media
+      # data:
+        # entity_id: media_player.tv
+        # media_content_id: "https://www.youtube.com/watch?v=NSi-MniOTqI"
+        # media_content_type: video/youtube
+
+# doorbeep:
+  # alias: "Door Beep"
+  # sequence:
+    # - service: media_player.play_media
+      # data:
+        # entity_id: media_player.kitchen_speaker
+        # media_content_type: music
+        # media_content_id: "http://192.168.1.4:8123/local/backinblack.mp3"
+    # - service: media_player.turn_off
+      # entity_id: media_player.kitchen_speaker
+
+# doorbeep2:
+  # alias: "Door Beep 2"
+  # sequence:
+    # - service: media_player.turn_on
+      # data:          
+        # entity_id: media_player.kitchen_speaker
+    # - service: media_player.play_media
+      # data:
+        # entity_id: media_player.kitchen_speaker
+        # media_content_type: music
+        # media_content_id: "http://192.168.1.4:8123/local/beep.mp3"
+    # - service: media_player.turn_off
+      # entity_id: media_player.kitchen_speaker
+      
+# doorbeep3:
+  # alias: "Door Beep 3"
+  # sequence:
+    # - service: media_player.turn_on
+      # data:          
+        # entity_id: media_player.kitchen_speaker
+    # - service: media_player.volume_set
+      # data:
+        # entity_id: media_player.kitchen_speaker
+        # volume_level: 0.50
+    # - service: media_player.play_media
+      # data:
+        # entity_id: media_player.kitchen_speaker
+        # media_content_type: music
+        # media_content_id: "http://192.168.1.4:8123/local/alarm.mp3"
+    # - service: media_player.turn_off
+      # entity_id: media_player.kitchen_speaker
+      
+# say_test:
+  # alias: "Say Test"
+  # sequence:
+    # - service: media_player.turn_on
+      # data:          
+        # entity_id: media_player.kitchen_speaker
+    # - service: media_player.volume_set
+      # data:
+        # entity_id: media_player.kitchen_speaker
+        # volume_level: 0.50
+    # - service: tts.google_say
+      # data_template:
+        # entity_id: media_player.kitchen_speaker
+        # message: >
+         # Front door, open
+    # - service: media_player.turn_off
+      # entity_id: media_player.kitchen_speaker
+         
+############################################################################
+#
+# Foscam 
+#
+############################################################################
+
+# foscamliv_front:
+  # alias: "View Front Door"
+  # sequence:
+    # - service: shell_command.foscam_liv_front
+
+# foscamliv_back:
+  # alias: "View Back Door"
+  # sequence:
+    # - service: shell_command.foscam_liv_back
+
+# foscamliv_ir_on:
+  # alias: "Infrared On"
+  # sequence:
+    # - service: shell_command.foscam_liv_ir_on
+
+# foscamliv_ir_off:
+  # alias: "Infrared Off"
+  # sequence:
+    # - service: shell_command.foscam_liv_ir_off
+    
+# edimax_screenshot:
+  # alias: "Edimax Screenshot"
+  # sequence:
+    # - service: camera.snapshot
+      # data:
+        # entity_id: camera.back_yard
+        # filename: /config/camera/backyard.jpg
+   
+# foscam_screenshot:
+  # alias: "Foscam Screenshot"
+  # sequence:
+    # - service: camera.snapshot
+      # data:
+        # entity_id: camera.living_room
+        # filename: /config/camera/livingroom.jpg
+        
+############################################################################
+#
+# MQTT Publish
+#
+############################################################################
+
+send_command_on:
+  sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: "home/OpenMQTTGateway/commands/IR_NEC"
+        payload: '16236607'
+        
+send_command_off:
+  sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: "home/OpenMQTTGateway/commands/IR_NEC"
+        payload: '16203967'

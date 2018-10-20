@@ -1,0 +1,84 @@
+{
+    "data": {
+        "credentials": [
+            {
+                "auth_provider_id": null,
+                "auth_provider_type": "homeassistant",
+                "data": {
+                    "username": "derikj"
+                },
+                "id": "f70f527a599542d3877c3f1a047356d3",
+                "user_id": "a0694d8db2974332b24047f9ae1be6a5"
+            }
+        ],
+        "refresh_tokens": [
+            {
+                "access_token_expiration": 1800.0,
+                "client_icon": null,
+                "client_id": "http://192.168.1.38:8123/",
+                "client_name": null,
+                "created_at": "2018-09-11T16:43:47.455700+00:00",
+                "id": "21790fa6c2ee495a8a10b5be02f68ead",
+                "jwt_key": "8b85e438aace7467c4e8e3c333816915014add022b460c999018ab16beaf186eb12d9f0c6512f501d4362515d3d1fa963068b93a33fd638202c466cdee5b330c",
+                "last_used_at": "2018-10-20T09:40:22.833824+00:00",
+                "last_used_ip": "192.168.1.6",
+                "token": "beac90e1c18c0a5d06254cd12148d200807a87471d0c81f19090631b3f7492e4f8fb0de592c6f8af287afa88d2c2ad607eaa0596240706d42b5003416e47f9f8",
+                "token_type": "normal",
+                "user_id": "a0694d8db2974332b24047f9ae1be6a5"
+            },
+            {
+                "access_token_expiration": 1800.0,
+                "client_icon": null,
+                "client_id": "http://192.168.1.38:8123/",
+                "client_name": null,
+                "created_at": "2018-09-11T20:48:45.843304+00:00",
+                "id": "944711fac7f1434d8e539f024ef39d2d",
+                "jwt_key": "07f3b0bb96a21a80d2bb56152ce593e59ee96430ffaad5175678e56e58d0f8468dc0aaa441a0771ced0c1768753ca68ef27cc77b1ef5fc93f557542063f20926",
+                "last_used_at": "2018-10-19T18:36:38.012797+00:00",
+                "last_used_ip": "192.168.1.7",
+                "token": "25fba5ed79e4064de1cbcb29832409e80937ba71a2b6ef0004f2d93e4d491131924f9fae8ae47377a34089af543ffae66b5c91b2f9e138ffef1ca73a1d4cdb70",
+                "token_type": "normal",
+                "user_id": "a0694d8db2974332b24047f9ae1be6a5"
+            },
+            {
+                "access_token_expiration": 1800.0,
+                "client_icon": null,
+                "client_id": "http://41.71.107.122:8123/",
+                "client_name": null,
+                "created_at": "2018-09-11T22:08:46.670068+00:00",
+                "id": "4afd393a5c004b4d9177bf20d499cd04",
+                "jwt_key": "d34ad762f212d9638413e1d037ba7e391dca61e7c387ca28eba75df7f5fa25fd47700d49c2e2230b3d08770496ca5a0f9641b530555ffa34d497dc1c7486a74b",
+                "last_used_at": null,
+                "last_used_ip": null,
+                "token": "5097da341d7bd64107e1c04883595e6e8a44601ac797f0b72235bc4b9afe1effb1c6732ad109c898a7dd64ff628109702d4d95c173955406ae3c71a61180ecd0",
+                "token_type": "normal",
+                "user_id": "a0694d8db2974332b24047f9ae1be6a5"
+            },
+            {
+                "access_token_expiration": 1800.0,
+                "client_icon": null,
+                "client_id": "http://41.71.107.122:8123/",
+                "client_name": null,
+                "created_at": "2018-09-12T08:32:52.226775+00:00",
+                "id": "feee61a6a1604d88ae4805a09fa4bae5",
+                "jwt_key": "a83d61f1c454b581f5604be44180f3c2ea0b66eca84a400800e027769fcb5478fdfbe1bacd50bda71714c8e4ff4e6efab5cca4fd323a308401fc34087c9188aa",
+                "last_used_at": null,
+                "last_used_ip": null,
+                "token": "18963aec5f2017cd5c16e51e98d98e188e5c5b14855a11bd9f02ef47a94d5c4930181cd41f0e17e899993bf6d287364c9c50efedc115bae8da26d9fc1c3b3de5",
+                "token_type": "normal",
+                "user_id": "a0694d8db2974332b24047f9ae1be6a5"
+            }
+        ],
+        "users": [
+            {
+                "id": "a0694d8db2974332b24047f9ae1be6a5",
+                "is_active": true,
+                "is_owner": true,
+                "name": "Derik",
+                "system_generated": false
+            }
+        ]
+    },
+    "key": "auth",
+    "version": 1
+}
