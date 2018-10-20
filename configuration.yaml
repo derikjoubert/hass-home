@@ -25,11 +25,10 @@ sun:
 conversation:
 updater:
 http:
-  # base_url: sanctumsanctorum.duckdns.org:8123
+  # base_url: REDACTED
   # ssl_certificate: /ssl/fullchain.pem
   # ssl_key: /ssl/privkey.pem
   api_password: REDACTED
-  # base_url: http://192.168.1.38:8123/api/spotify
   #server_port: 443
 # hassio:
 history:
